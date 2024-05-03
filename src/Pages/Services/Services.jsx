@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ServiesCard from './ServiesCard';
 
 const Services = () => {
     const [services,setServices]=useState([]);
@@ -20,6 +21,11 @@ const Services = () => {
             Our Service Area
             </h2>
             <p>the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. </p>
+            <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2'>
+                {
+                    services.map(service=><ServiesCard service={service} key={service._id}></ServiesCard>)
+                }
+            </div>
         </div>
     );
 };
