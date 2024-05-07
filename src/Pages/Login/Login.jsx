@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import loginImg from '../../assets/images/login/login.svg'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Auth/AuthProviders';
 import toast from 'react-hot-toast';
 const Login = () => {
     const {signIn}=useContext(AuthContext);
+    const navigate=useNavigate();
+    const location=useLocation();
     const handleLogin=(e)=>{
      e.preventDefault();
         const form=e.target;
@@ -15,7 +17,9 @@ const Login = () => {
         .then((userCredential)=>{
             const user=userCredential.user;
             toast.success('User logged in successfully');
-            console.log(user);})
+            console.log(user);
+            navigate(location?.state?location.state :'/')
+          })
         .catch((error)=>{
             const errorCode=error.code;
             const errorMessage=error.message;

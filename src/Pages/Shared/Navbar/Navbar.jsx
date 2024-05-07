@@ -82,16 +82,14 @@ const Navbar = () => {
          {
             user ? (
               <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn btn-ghost">
+              <div tabIndex={0} role="button" className="btn btn-ghost bg-slate-400">
                 {user.email}
               </div>
               <ul
                 tabIndex={0}
-                className="menu dropdown-content bg-base-100 rounded-box w-52"
+                className="menu dropdown-content bg-base-100 rounded-box w-52 bg-slate-500"
               >
-                <li>
-                  <Link to={'/profile'}>Profile</Link>
-                </li>
+               
                 <li>
                 <Link to={'/bookings'}>
                  My Bookings
