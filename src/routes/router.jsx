@@ -12,6 +12,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp.jsx/SignUp";
 import Checkout from "../Pages/Checkout/Checkout";
+import PrivateRoute from "../Private/PrivateRoute";
 import Bookings from "../Pages/Bookings/Bookings";
  export const router = createBrowserRouter([
     {
@@ -45,7 +46,9 @@ import Bookings from "../Pages/Bookings/Bookings";
           loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
         },{
           path:'/bookings',
-          element:<Bookings/>
+          element:<PrivateRoute>
+            <Bookings/>
+          </PrivateRoute>
         }
       ]
     },
