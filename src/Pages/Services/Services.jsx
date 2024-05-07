@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ServiesCard from './ServiesCard';
+import { AuthContext } from '../../Auth/AuthProviders';
 
 const Services = () => {
+    const {user}=useContext(AuthContext);
     const [services,setServices]=useState([]);
     
     useEffect(()=>{

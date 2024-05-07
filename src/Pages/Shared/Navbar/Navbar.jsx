@@ -1,8 +1,10 @@
-import React from "react";
+import  { useContext } from "react";
 import logo from '../../../assets/icons/logo.svg'
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Auth/AuthProviders";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -38,6 +40,7 @@ const Navbar = () => {
               <li>
                 <Link to={'/services'}>Services</Link>
               </li>
+              
               <li>
                 <Link to={'/blog'}>Blog</Link>
               </li>
@@ -64,6 +67,7 @@ const Navbar = () => {
               <li>
                 <Link to={'/services'}>Services</Link>
               </li>
+              
               <li>
                 <Link to={'/blog'}>Blog</Link>
               </li>
@@ -75,7 +79,33 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to={'/login'} className="btn">Login</Link>
+         {
+            user ? (
+              <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="btn btn-ghost">
+                {user.email}
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link to={'/profile'}>Profile</Link>
+                </li>
+                <li>
+                <Link to={'/bookings'}>
+                 My Bookings
+                </Link>
+              </li>
+                <li>
+                  <button onClick={logout}>Logout</button>
+                </li>
+              </ul>
+            </div>
+            ) : (
+              <Link to={'/login'} className="btn btn-primary">Login</Link>
+            )
+         }
         </div>
       </div>
     </div>
